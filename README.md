@@ -1,5 +1,3 @@
-# AnalyseFixedPointInNPHC
-Analyse Fixed Point in NPHC method
 # Analyse Fixed Point in NPHC
 
 ## Description
