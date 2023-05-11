@@ -18,3 +18,18 @@ from matplotlib import pyplot as plt
 # plt.grid()
 # plt.plot(x,y,color='k')
 # plt.show()
+
+# Fig.1(c): Minkowski sum
+x = np.array([0,3,3,2])
+y = np.array([1,4,2,0])
+x1 = np.array([0,2,1])
+y1 = np.array([0,2,0])
+x2 = np.array([2,3,2,2])
+y2 = np.array([2,2,2,3])
+plt.xlim(0,4)
+plt.ylim(0,5)
+plt.grid()
+plt.plot(x,y,color='k')
+plt.plot(x1,y1,color='k')
+plt.plot(x2,y2,color='k')
+plt.show()
