@@ -1,5 +1,6 @@
 # Import the packages
 import numpy as np
+import math
 
 #
 # If we have a 3*3 Grid Graph with Uniform Factors like below:
@@ -10,24 +11,19 @@ import numpy as np
 #      O---O---O           X7--X8--X9
 # Then we can do label these points from left to right, from up to down.
 #
+phi_ij = np.array([])
+phi_i = np.array([])
+for theta in np.array([0,0.2,0.6]):
+    for j in np.arange(-2.0,2.0,0.2):
+        phi_ij = np.append(phi_ij,math.exp(j))
+        phi_i = np.append(phi_i,math.exp(theta)) 
+phi_ij = phi_ij.reshape(3,-1)
+phi_i = phi_i.reshape(3,-1)
 
 # Initalization the message and define the structure of the graph
 num_nodes = 9
 num_edges = 12
 num_states = 2
-
-#Input0
-pot_p_positive = 0.018315638888734182
-pot_p_passive = 54.59815003314423
-pot_n_positive = 1.0
-pot_n_passive = 1.0
-
-# # Input158
-# pot_p_positive = 0.9048374180359564
-# pot_p_passive = 1.1051709180756515
-# pot_n_positive = 0.03019738342231841
-# pot_n_passive = 33.11545195869241
-
 messages_positive = np.ones(2 * num_edges) * (0.3)
 messages_passive = 1-messages_positive
 '''
@@ -75,11 +71,12 @@ def belief_propagation(iteration):
         adjancy_p_message = adjancy(messages_positive)
         adjancy_passive_message = adjancy(messages_passive)
         for edge in range(num_edges*2):
-            messages_positive[edge] = pot_p_passive*adjancy_passive_message[edge] + pot_p_positive*adjancy_p_message[edge]
-            messages_passive[edge] = pot_n_passive*adjancy_passive_message[edge] + pot_n_positive*adjancy_p_message[edge]
+            messages_positive[edge] = (1/phi_i[0][0])*(1/phi_ij[0][0])*adjancy_passive_message[edge] + phi_i[0][0]*phi_ij[0][0]*adjancy_p_message[edge]
+            messages_passive[edge] = phi_ij[0][0]*(1/phi_i[0][0])*adjancy_passive_message[edge] + (1/phi_ij[0][0])*(phi_i[0][0])*adjancy_p_message[edge]
             # To normalized the messages
             messages_positive[edge] = messages_positive[edge]/(messages_positive[edge] + messages_passive[edge])
             messages_passive[edge] = 1 - messages_positive[edge]
-        print(messages_positive)
+    print(messages_positive)
+    return messages_positive
 
 belief_propagation(10)
