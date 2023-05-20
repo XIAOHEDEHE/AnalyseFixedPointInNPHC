@@ -1,6 +1,6 @@
 import numpy as np
 
-# # # Initial message
+# # Initial message
 # ra1=0.428571429
 # ra2=0.428571429
 # ra3=0.428571429
@@ -25,6 +25,7 @@ import numpy as np
 # q4c=0.428571429
 # q7c=0.5
 # q1c=0.428571429
+
 # another
 ra1=0.5
 q2a=0.5
@@ -52,7 +53,7 @@ rc4=0.5
 rc7=0.5
 
 
-for i in range(5):
+for i in range(2):
     ra11_new = (1-q2a)*(1-q3a)*q5a + q2a*(1-q3a)*(1-q5a) + (1-q2a)*q3a*(1-q5a) + q2a*q3a*q5a
     ra10_new = (1-q2a)*(1-q3a)*(1-q5a) + q2a*q3a*(1-q5a) + (1-q2a)*q3a*q5a + q2a*(1-q3a)*q5a
     ra21_new = (1-q1a)*(1-q3a)*q5a + q1a*(1-q3a)*(1-q5a) + (1-q1a)*q3a*(1-q5a) + q1a*q3a*q5a
