@@ -28,7 +28,7 @@ pot_n_passive = 1.0
 # pot_n_positive = 0.03019738342231841
 # pot_n_passive = 33.11545195869241
 
-messages_positive = np.ones(2 * num_edges) * (10000)
+messages_positive = np.ones(2 * num_edges) * (0.3)
 messages_passive = 1-messages_positive
 '''
 messages table
@@ -72,13 +72,14 @@ def adjancy(messages):
 # Belief Propagation algorithm
 def belief_propagation(iteration):
     for iter in range(iteration):
-        adjancy_message = adjancy(messages_positive)
+        adjancy_p_message = adjancy(messages_positive)
+        adjancy_passive_message = adjancy(messages_passive)
         for edge in range(num_edges*2):
-            messages_positive[edge] = pot_p_passive*adjancy_message[edge] + pot_p_positive*adjancy_message[edge]
-            messages_passive[edge] = pot_n_passive*adjancy_message[edge] + pot_n_positive*adjancy_message[edge]
+            messages_positive[edge] = pot_p_passive*adjancy_passive_message[edge] + pot_p_positive*adjancy_p_message[edge]
+            messages_passive[edge] = pot_n_passive*adjancy_passive_message[edge] + pot_n_positive*adjancy_p_message[edge]
             # To normalized the messages
             messages_positive[edge] = messages_positive[edge]/(messages_positive[edge] + messages_passive[edge])
             messages_passive[edge] = 1 - messages_positive[edge]
-    print(messages_positive)
+        print(messages_positive)
 
-belief_propagation(1)
+belief_propagation(10)
