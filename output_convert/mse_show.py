@@ -22,4 +22,4 @@ def show_mse(filename_num):
     plt.grid()
     plt.show()
         
-print(show_mse(theta00))
+print(show_mse(theta06))
