@@ -12,6 +12,7 @@ for file_name in name:
     mse_output = np.array([])
     # 输出结果中各个U的顺序
     outputU = np.array([0,2,3,5,6,7,10,11,14,15,16,19,20,21,24,27,28,29,32,33,36,37,38,41])
+    neighbor_message = np.array([[2,3],[0,5,6],[7,10],[11,14,15],[16,19,20,21],[24,27,28],[29,32],[33,36,37],[38,41]])
 
     # 将file_context中的字符串类型转化为实数类型，去除它的虚数部分，之后将其存储在mse_store中
     file_context_real = np.array([])

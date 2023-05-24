@@ -26,34 +26,60 @@ import numpy as np
 # q7c=0.5
 # q1c=0.428571429
 
-# another
-ra1=0.5
-q2a=0.5
-q3a=0.5
+# # another
+# ra1=0.5
+# q2a=0.5
+# q3a=0.5
+# q5a=0.5
+# ra2=0.5
+# q1a=0.5
+# ra3=0.5
+# ra5=0.5
+# rb2=0.5
+# q3b=0.5
+# q4b=0.5
+# q6b=0.5
+# rb3=0.5
+# q2b=0.5
+# rb4=0.5
+# rb6=0.5
+# rc1=0.5
+# q3c=0.5
+# q4c=0.5
+# q7c=0.5
+# rc3=0.5
+# q1c=0.5
+# rc4=0.5
+# rc7=0.5
+
+# Initial message
+ra1=0.1
+ra2=0.2
+ra3=0.3
+ra5=0.22
+rb2=0.37
+rb3=0.65
+rb4=0.24
+rb6=0.33
+rc1=0.87
+rc3=0.21
+rc4=0.32
+rc7=0.42
+q2a=0.44
+q3a=0.47
 q5a=0.5
-ra2=0.5
-q1a=0.5
-ra3=0.5
-ra5=0.5
-rb2=0.5
-q3b=0.5
-q4b=0.5
+q1a=0.87
+q3b=0.88
+q4b=0.76
 q6b=0.5
-rb3=0.5
-q2b=0.5
-rb4=0.5
-rb6=0.5
-rc1=0.5
-q3c=0.5
-q4c=0.5
+q2b=0.52
+q3c=0.15
+q4c=0.11
 q7c=0.5
-rc3=0.5
-q1c=0.5
-rc4=0.5
-rc7=0.5
+q1c=0.24
 
 
-for i in range(2):
+for i in range(50):
     ra11_new = (1-q2a)*(1-q3a)*q5a + q2a*(1-q3a)*(1-q5a) + (1-q2a)*q3a*(1-q5a) + q2a*q3a*q5a
     ra10_new = (1-q2a)*(1-q3a)*(1-q5a) + q2a*q3a*(1-q5a) + (1-q2a)*q3a*q5a + q2a*(1-q3a)*q5a
     ra21_new = (1-q1a)*(1-q3a)*q5a + q1a*(1-q3a)*(1-q5a) + (1-q1a)*q3a*(1-q5a) + q1a*q3a*q5a
@@ -133,5 +159,6 @@ for i in range(2):
     q1c=q1c_new
 
     output = np.array([ra1,ra2,ra3,ra5,rb2,rb3,rb4,rb6,rc1,rc3,rc4,rc7,q2a,q3a,q1a,q3b,q4b,q2b,q3c,q4c,q1c,q5a,q6b,q7c])
+    print(i)
     print(output)
 
